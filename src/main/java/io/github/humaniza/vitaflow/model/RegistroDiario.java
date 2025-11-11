@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
 
 import java.util.HashMap;
 
@@ -20,9 +21,9 @@ public class RegistroDiario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idPaciente", nullable = false)
-    private Paciente idPaciente;
+    private Paciente paciente;
 
     @Enumerated(EnumType.STRING)
     private EstadoMental estadoMental;
