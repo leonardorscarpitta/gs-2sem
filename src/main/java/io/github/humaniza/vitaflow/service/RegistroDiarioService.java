@@ -18,13 +18,11 @@ import java.util.List;
 public class RegistroDiarioService {
     private final RegistroDiarioRepository registroDiarioRepository;
     private final PacienteRepository pacienteRepository;
-    private final PacienteMapper pacienteMapper;
     private final RegistroDiarioMapper registroDiarioMapper;
 
-    public RegistroDiarioService(RegistroDiarioRepository registroDiarioRepository, PacienteRepository pacienteRepository, PacienteMapper pacienteMapper, RegistroDiarioMapper registroDiarioMapper) {
+    public RegistroDiarioService(RegistroDiarioRepository registroDiarioRepository, PacienteRepository pacienteRepository, RegistroDiarioMapper registroDiarioMapper) {
         this.registroDiarioRepository = registroDiarioRepository;
         this.pacienteRepository = pacienteRepository;
-        this.pacienteMapper = pacienteMapper;
         this.registroDiarioMapper = registroDiarioMapper;
     }
 
