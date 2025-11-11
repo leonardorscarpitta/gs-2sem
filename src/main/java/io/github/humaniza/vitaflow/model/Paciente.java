@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
@@ -34,9 +35,11 @@ public class Paciente {
     private LocalDate dataNascimento;
 
     @Email
+    @Column(unique = true, nullable = false)
     private String email;
 
     @CPF
+    @Column(unique = true, nullable = false)
     private String cpf;
 
     @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, orphanRemoval = true)
