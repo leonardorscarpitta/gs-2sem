@@ -1,5 +1,6 @@
 package io.github.humaniza.vitaflow.model;
 
+import io.github.humaniza.vitaflow.dto.PacienteRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,4 +27,18 @@ public class Paciente {
     private String email;
 
     private String cpf;
+
+    public Paciente(PacienteRequestDTO pacienteRequestDTO) {
+        this.nome = pacienteRequestDTO.nome();
+        this.dataNascimento = pacienteRequestDTO.dataNascimento();
+        this.email = pacienteRequestDTO.email();
+        this.cpf = pacienteRequestDTO.cpf();
+    }
+
+    public void atualizarDados(PacienteRequestDTO pacienteRequestDTO) {
+        this.nome = pacienteRequestDTO.nome();
+        this.dataNascimento = pacienteRequestDTO.dataNascimento();
+        this.email = pacienteRequestDTO.email();
+        this.cpf = pacienteRequestDTO.cpf();
+    }
 }

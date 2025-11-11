@@ -1,10 +1,13 @@
 package io.github.humaniza.vitaflow.model;
 
+import io.github.humaniza.vitaflow.dto.RegistroDiarioRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.HashMap;
 
 @Entity
 @Table(name = "registroDiario")
@@ -27,4 +30,16 @@ public class RegistroDiario {
     private Integer qualidadeSono;
 
     private Integer qualidadeHumor;
+
+    public RegistroDiario(RegistroDiarioRequestDTO registroDiarioRequestDTO) {
+        this.estadoMental = registroDiarioRequestDTO.estadoMental();
+        this.qualidadeSono = registroDiarioRequestDTO.qualidadeSono();
+        this.qualidadeHumor = registroDiarioRequestDTO.qualidadeHumor();
+    }
+
+    public void atualizarRegistro(RegistroDiarioRequestDTO registroDiarioRequestDTO) {
+        this.estadoMental = registroDiarioRequestDTO.estadoMental();
+        this.qualidadeSono = registroDiarioRequestDTO.qualidadeSono();
+        this.qualidadeHumor = registroDiarioRequestDTO.qualidadeHumor();
+    }
 }
