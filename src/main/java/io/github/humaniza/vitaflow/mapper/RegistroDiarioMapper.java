@@ -3,7 +3,9 @@ package io.github.humaniza.vitaflow.mapper;
 import io.github.humaniza.vitaflow.dto.RegistroDiarioRequestDTO;
 import io.github.humaniza.vitaflow.dto.RegistroDiarioResponseDTO;
 import io.github.humaniza.vitaflow.model.RegistroDiario;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RegistroDiarioMapper {
 
     public RegistroDiario toEntity(RegistroDiarioRequestDTO request) {
