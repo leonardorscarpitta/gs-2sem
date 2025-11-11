@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitaFlow - Registros Diários</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/js/app.js}" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>🏥 VitaFlow</h1>
+            <p>Sistema de Gestão de Saúde Mental</p>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="/pacientes">👥 Pacientes</a>
+            <a href="/registros">📝 Registros Diários</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Mensagens de Feedback -->
+        <div th:if="${mensagem}" th:class="${'alert alert-' + tipo}">
+            <span th:text="${mensagem}"></span>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>Lista de Registros Diários</h2>
+                <a href="/registros/novo" class="btn btn-primary">➕ Novo Registro</a>
+            </div>
+
+            <div th:if="${registros != null and !registros.isEmpty()}" class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>ID Paciente</th>
+                            <th>Estado Mental</th>
+                            <th>Qualidade do Sono</th>
+                            <th>Qualidade do Humor</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="registro : ${registros}">
+                            <td th:text="${registro.id}"></td>
+                            <td th:text="${registro.idPaciente}"></td>
+                            <td>
+                                <span th:class="${'badge badge-' + #strings.toLowerCase(registro.estadoMental)}"
+                                      th:text="${registro.estadoMental}"></span>
+                            </td>
+                            <td>
+                                <span th:text="${registro.qualidadeSono + '/10'}"></span>
+                            </td>
+                            <td>
+                                <span th:text="${registro.qualidadeHumor + '/10'}"></span>
+                            </td>
+                            <td>
+                                <div class="table-actions">
+                                    <a th:href="@{/registros/editar/{id}(id=${registro.id})}"
+                                       class="btn btn-warning btn-sm">✏️ Editar</a>
+                                    <a th:href="@{/registros/remover/{id}(id=${registro.id})}"
+                                       class="btn btn-danger btn-sm"
+                                       onclick="return confirm('Tem certeza que deseja remover este registro?')">🗑️ Remover</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div th:if="${registros == null or registros.isEmpty()}" class="empty-state">
+                <p>📋 Nenhum registro cadastrado</p>
+                <a href="/registros/novo" class="btn btn-primary">Cadastrar Primeiro Registro</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

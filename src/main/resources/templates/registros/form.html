@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitaFlow - Novo Registro</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/js/app.js}" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>🏥 VitaFlow</h1>
+            <p>Sistema de Gestão de Saúde Mental</p>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="/pacientes">👥 Pacientes</a>
+            <a href="/registros">📝 Registros Diários</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>➕ Novo Registro Diário</h2>
+            </div>
+
+            <form th:action="@{/registros/salvar}" method="post">
+                <div class="form-group">
+                    <label for="idPaciente">Paciente *</label>
+                    <select id="idPaciente" name="idPaciente" class="form-control" required>
+                        <option value="">Selecione um paciente</option>
+                        <option th:each="paciente, iterStat : ${pacientes}"
+                                th:value="${iterStat.index + 1}"
+                                th:text="${paciente.nome + ' - ' + paciente.email}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="estadoMental">Estado Mental *</label>
+                    <select id="estadoMental" name="estadoMental" class="form-control" required>
+                        <option value="">Selecione o estado mental</option>
+                        <option th:each="estado : ${estadosMentais}"
+                                th:value="${estado}"
+                                th:text="${estado}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="qualidadeSono">Qualidade do Sono (0-10) *</label>
+                    <input type="number" id="qualidadeSono" name="qualidadeSono"
+                           class="form-control" min="0" max="10" required>
+                    <small style="color: #666;">0 = Péssimo | 10 = Excelente</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="qualidadeHumor">Qualidade do Humor (0-10) *</label>
+                    <input type="number" id="qualidadeHumor" name="qualidadeHumor"
+                           class="form-control" min="0" max="10" required>
+                    <small style="color: #666;">0 = Péssimo | 10 = Excelente</small>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">💾 Salvar</button>
+                    <a href="/registros" class="btn btn-danger">❌ Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
