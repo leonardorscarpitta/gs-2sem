@@ -2,6 +2,7 @@ package io.github.humaniza.vitaflow.service;
 
 import io.github.humaniza.vitaflow.dto.RegistroDiarioRequestDTO;
 import io.github.humaniza.vitaflow.dto.RegistroDiarioResponseDTO;
+import io.github.humaniza.vitaflow.mapper.RegistroDiarioMapper;
 import io.github.humaniza.vitaflow.model.RegistroDiario;
 import io.github.humaniza.vitaflow.repository.RegistroDiarioRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -13,9 +14,11 @@ import java.util.List;
 @Service
 public class RegistroDiarioService {
     private final RegistroDiarioRepository registroDiarioRepository;
+    private final RegistroDiarioMapper registroDiarioMapper;
 
-    public RegistroDiarioService(RegistroDiarioRepository registroDiarioRepository) {
+    public RegistroDiarioService(RegistroDiarioRepository registroDiarioRepository, RegistroDiarioMapper registroDiarioMapper) {
         this.registroDiarioRepository = registroDiarioRepository;
+        this.registroDiarioMapper = registroDiarioMapper;
     }
 
     public RegistroDiarioResponseDTO registrarRegistro(RegistroDiarioRequestDTO registroDiarioRequestDTO) {

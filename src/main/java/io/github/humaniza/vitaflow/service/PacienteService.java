@@ -2,6 +2,7 @@ package io.github.humaniza.vitaflow.service;
 
 import io.github.humaniza.vitaflow.dto.PacienteRequestDTO;
 import io.github.humaniza.vitaflow.dto.PacienteResponseDTO;
+import io.github.humaniza.vitaflow.mapper.PacienteMapper;
 import io.github.humaniza.vitaflow.model.Paciente;
 import io.github.humaniza.vitaflow.repository.PacienteRepository;
 import jakarta.transaction.Transactional;
@@ -12,20 +13,22 @@ import java.util.List;
 @Service
 public class PacienteService {
     private final PacienteRepository pacienteRepository;
+    private final PacienteMapper pacienteMapper;
 
-    public PacienteService(PacienteRepository pacienteRepository) {
+    public PacienteService(PacienteRepository pacienteRepository, PacienteMapper pacienteMapper) {
         this.pacienteRepository = pacienteRepository;
+        this.pacienteMapper = pacienteMapper;
     }
 
     public PacienteResponseDTO registrarPaciente(PacienteRequestDTO pacienteRequestDTO) {
-        Paciente pacienteSalvo = new Paciente(pacienteRequestDTO);
+        Paciente pacienteSalvo = pacienteMapper.toEntity(pacienteRequestDTO);
         pacienteRepository.save(pacienteSalvo);
-        return new PacienteResponseDTO(pacienteSalvo);
+        return pacienteMapper.toResponse(pacienteSalvo);
     }
 
     public PacienteResponseDTO buscarPacientePorCpf(String pacienteCpf) {
         Paciente pacienteBuscado = pacienteRepository.findByCpf(pacienteCpf);
-        return new PacienteResponseDTO(pacienteBuscado);
+        return pacienteMapper.toResponse(pacienteBuscado);
     }
 
     public List<PacienteResponseDTO> listarPacientes() {
@@ -39,13 +42,12 @@ public class PacienteService {
     public PacienteResponseDTO atualizarPaciente(PacienteRequestDTO pacienteRequestDTO, String cpfASerAtualizado) {
         Paciente paciente = pacienteRepository.findByCpf(cpfASerAtualizado);
         paciente.atualizarDados(pacienteRequestDTO);
-        return new PacienteResponseDTO(paciente);
+        return pacienteMapper.toResponse(paciente);
     }
 
     @Transactional
     public PacienteResponseDTO removerPaciente(String pacienteCpf) {
         PacienteResponseDTO pacienteASerRemovido = this.buscarPacientePorCpf(pacienteCpf);
-        String emailPacienteRemovido = pacienteASerRemovido.email();
         return pacienteRepository.removePacienteByCpf(pacienteCpf);
     }
 
