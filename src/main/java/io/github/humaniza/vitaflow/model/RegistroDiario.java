@@ -2,14 +2,11 @@ package io.github.humaniza.vitaflow.model;
 
 import io.github.humaniza.vitaflow.dto.RegistroDiarioRequestDTO;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Fetch;
-
-import java.util.HashMap;
 
 @Entity
 @Table(name = "registroDiario")
@@ -29,10 +26,10 @@ public class RegistroDiario {
     @Enumerated(EnumType.STRING)
     private EstadoMental estadoMental;
 
-    @NotBlank
+    @NotNull
     private Integer qualidadeSono;
 
-    @NotBlank
+    @NotNull
     private Integer qualidadeHumor;
 
     public RegistroDiario(RegistroDiarioRequestDTO registroDiarioRequestDTO) {

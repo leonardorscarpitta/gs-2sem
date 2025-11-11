@@ -1,18 +1,18 @@
 package io.github.humaniza.vitaflow.model;
 
 import io.github.humaniza.vitaflow.dto.PacienteRequestDTO;
-import io.github.humaniza.vitaflow.dto.RegistroDiarioResponseDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -27,11 +27,11 @@ public class Paciente {
     private Integer id;
 
     @NotBlank
-    @Min(value = 3)
+    @Size(min = 3)
     private String nome;
 
-    @NotBlank
-    private LocalDateTime dataNascimento;
+    @NotNull
+    private LocalDate dataNascimento;
 
     @Email
     private String email;

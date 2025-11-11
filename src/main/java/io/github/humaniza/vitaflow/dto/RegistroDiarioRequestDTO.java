@@ -1,7 +1,6 @@
 package io.github.humaniza.vitaflow.dto;
 
 import io.github.humaniza.vitaflow.model.EstadoMental;
-import io.github.humaniza.vitaflow.model.Paciente;
 import io.github.humaniza.vitaflow.model.RegistroDiario;
 
 public record RegistroDiarioRequestDTO(Integer idPaciente,

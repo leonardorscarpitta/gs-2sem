@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             alert.style.opacity = '0';
             setTimeout(() => alert.remove(), 300);
-        }, 5000);
+        }, 10000);
     });
 });
 
