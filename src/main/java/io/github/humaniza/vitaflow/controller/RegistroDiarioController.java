@@ -29,13 +29,14 @@ public class RegistroDiarioController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/buscar/{id}")
     public ResponseEntity<HashMap<String, Object>> buscarRegistroPorId(@PathVariable Integer id) {
         RegistroDiarioResponseDTO registroDiarioResponseDTO = registroDiarioService.buscarRegistroPorId(id);
         HashMap<String, Object> response = convertControllersResponseEntities.manageStatus(registroDiarioResponseDTO, HttpStatus.OK);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
+    @GetMapping("/buscar")
     public ResponseEntity<HashMap<String, Object>> listarRegistros() {
         List<RegistroDiarioResponseDTO> registroDiarioResponseDTO = registroDiarioService.listarRegistros();
         HashMap<String, Object> response = convertControllersResponseEntities.manageStatus(registroDiarioResponseDTO, HttpStatus.OK);
