@@ -10,7 +10,7 @@ public record RegistroDiarioRequestDTO(Integer idPaciente,
                                         Integer qualidadeHumor) {
     public RegistroDiarioRequestDTO(RegistroDiario registroDiario) {
         this(
-                registroDiario.getIdPaciente().getId(),
+                registroDiario.getPaciente().getId(),
                 registroDiario.getEstadoMental(),
                 registroDiario.getQualidadeSono(),
                 registroDiario.getQualidadeHumor()

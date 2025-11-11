@@ -7,12 +7,14 @@ import java.time.LocalDateTime;
 public record PacienteResponseDTO(
         String nome,
         LocalDateTime dataNascimento,
-        String email) {
+        String email,
+        String cpf) {
     public PacienteResponseDTO(Paciente paciente) {
         this(
                 paciente.getNome(),
                 paciente.getDataNascimento(),
-                paciente.getEmail()
+                paciente.getEmail(),
+                paciente.getCpf()
         );
     }
 }
