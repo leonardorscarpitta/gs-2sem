@@ -8,12 +8,13 @@ O **VitaFlow** é uma aplicação web completa para monitoramento e gestão de p
 
 ### Principais Funcionalidades
 
-- ✅ Cadastro e gerenciamento completo de pacientes
-- ✅ Registro diário de acompanhamento (estado mental, qualidade de sono e humor)
-- ✅ Interface web amigável com Thymeleaf
-- ✅ API REST para integração com outros sistemas
-- ✅ Tratamento robusto de exceções
-- ✅ Banco de dados H2 em memória para facilitar desenvolvimento e testes
+- Cadastro e gerenciamento completo de pacientes
+- Registro diário de acompanhamento (estado mental, qualidade de sono e humor)
+- Interface web amigável com Thymeleaf
+- API REST para integração com outros sistemas
+- Tratamento robusto de exceções
+- Banco de dados H2 em memória para facilitar desenvolvimento e testes
+- Documentação do Swagger que pode ser acessada em `/swagger-ui/index.html#/`
 
 ## 🏗️ Arquitetura e Camadas
 
