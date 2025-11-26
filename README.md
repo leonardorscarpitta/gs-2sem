@@ -1,3 +1,8 @@
+Integrantes do grupo
+Leonardo Rocha Scarpitta 555460
+Murilo Justi Rodrigues 554512
+Gabriel Matias Simões 556171
+
 # VitaFlow 🏥
 
 Sistema de gerenciamento de pacientes e registros diários para acompanhamento de saúde mental desenvolvido com Spring Boot.
@@ -176,9 +181,9 @@ spring.jpa.hibernate.ddl-auto=update
 ./mvnw spring-boot:run
 ```
 
+
 A aplicação estará disponível em: `http://localhost:8080`
 Console H2: `http://localhost:8080/h2-console`
-
 ## 📁 Estrutura de Arquivos
 
 ```
@@ -207,4 +212,3 @@ Este projeto foi desenvolvido seguindo as melhores práticas de:
 - SOLID Principles
 - REST API Design
 - JPA/Hibernate Best Practices
-
